@@ -78,3 +78,19 @@ body{
     align-items: center;
     gap: 5px;
 }
+
+.performance{
+    padding: 0px 20px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    color: white;
+}
+
+.performanceContent{
+    width: 200px;
+    padding: 15px 10px;
+    border-radius: 10px;
+    background-color: rgb(205, 142, 27);
+}

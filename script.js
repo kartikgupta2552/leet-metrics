@@ -8,6 +8,7 @@ const hardCircle = document.querySelector(".hard-circle")
 const easyLabel = document.getElementById("easy-label")
 const mediumLabel = document.getElementById("medium-label")
 const hardLabel = document.getElementById("hard-label")
+const performanceDiv = document.querySelector(".performance")
 
 function checkValidUsername(name){
     name = name.trim();
@@ -30,12 +31,10 @@ function updateProgress(total, solved, label, progressBar){
 }
 
 function displayUserData(data){
-    const totalQuestions = data.totalQuestions
     const totalEasy = data.totalEasy
     const totalMedium = data.totalMedium
     const totalHard = data.totalHard
 
-    const totalSolved = data.totalSolved
     const easySolved = data.easySolved
     const mediumSolved = data.mediumSolved
     const hardSolved = data.hardSolved
@@ -43,6 +42,20 @@ function displayUserData(data){
     updateProgress(totalEasy, easySolved, easyLabel, easyCircle)
     updateProgress(totalMedium, mediumSolved, mediumLabel, mediumCircle)
     updateProgress(totalHard, hardSolved, hardLabel, hardCircle)
+
+    const performanceData = [
+        {label : "acceptanceRate", value : data.acceptanceRate},
+        {label : "ranking", value : data.ranking},
+        {label : "contributionPoints", value : data.contributionPoints},
+        {label : "reputation", value : data.reputation},
+    ]
+
+    performanceDiv.innerHTML = performanceData.map(e => `
+        <div class="performanceContent">
+            <p>${e.label}</p>
+            <p>${e.value}</p>
+        </div>
+    `).join(" ")
 }
 
 searchButton.addEventListener("click", () => {
